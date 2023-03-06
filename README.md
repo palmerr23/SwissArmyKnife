@@ -7,7 +7,7 @@ There are two sets of code provided:
 
 Also included are device and help files for TestController https://lygte-info.dk/project/TestControllerIntro%20UK.html
 
-Several non-ESP32 core libraries are required:
+For the main SwissArmy code several non-ESP32 core libraries are required:
 * <ADS1X15.h>   https://github.com/RobTillaart/ADS1X15
 * <ESPTelnet.h>     https://github.com/LennartHennigs/ESPTelnet 
 * <TelnetStream.h>  https://github.com/jandrassy/TelnetStream

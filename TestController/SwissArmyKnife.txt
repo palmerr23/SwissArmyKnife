@@ -1,0 +1,165 @@
+; Platypus Swiss Army Knife
+; TestController must be restarted before any changes in this file will be used.
+; Manual is here: https://lygte-info.dk/project/TestControllerConfigDevice%20UK.html
+
+#idString Platy,SwissArmy
+#name Platypus Swiss Army Knife
+#handle PlatyKnife
+#help SwissArmyKnifeHelp
+#helpurl https://github.com/palmerr23/SwissArmyKnife
+#port 5025
+;#author rwp
+;#notes Only Ethernet configured, not usb. 
+ 
+#forceUpperCase 1
+#replaceText MaxVoltage 10
+
+#value Ain1 V D3
+#value Ain2 V D3
+#value Din1 - INT
+#value Din2 - INT
+#value Dout1 - INT
+#value Dout2 - INT
+#value R1 - INT
+#value R2 - INT
+#value DPOT - INT
+#value Freq Hz INT
+
+#readingDelay 2
+#askValues :MEAS:A1?; :MEAS:A2?; :MEAS:D1?; :MEAS:D2?; :SOUR:D1?; :SOUR:D2?; :SOUR:R1?; :SOUR:R2?; :SOUR:DPOT?; :SOUR:SF?; :SOUR:A1?
+
+#interface setA1 :SOUR:A1 (value)
+:readformat: u
+#interface setS1 :SOUR:S1 (value)
+:readformat: u
+#interface setD1 :SOUR:D1 (value)
+:readformat: u
+#interface setD2 :SOUR:D2 (value)
+:readformat: u
+#interface setR1 :SOUR:R1 (value)
+:readformat: u
+#interface setR2 :SOUR:R2 (value)
+:readformat: u
+#interface setDPOT :SOUR:DPOT (value)
+:readformat: u
+
+#interface getA1 :MEAS:A1?
+:readformat: u
+#interface getA2 :MEAS:A2?
+:readformat: u
+#interface getD1 :MEAS:D1?
+:readformat: u
+#interface getD2 :MEAS:D2?
+:readformat: u
+#interface getFreq :SOUR:SF?
+:readformat: u
+
+;;; Popup interface
+;;; Settings form
+
+#cmdSetup info Ain1
+:read: :MEAS:A1?
+V
+_
+
+#cmdSetup info Ain2 
+:read: :MEAS:A2?
+V
+_
+
+#cmdSetup indicatornum Din1 
+:read: :MEAS:D1?
+Low 0 black
+High 1 red
+
+#cmdSetup indicatornum Din2 
+:read: :MEAS:D2?
+Low 0 black
+High 1 red
+
+#cmdSetup separator - 
+2 100 Sunken
+
+#cmdSetup number DAC 
+:read: :SOUR:A1?
+;:readformat: u
+:write: :SOUR:A1 #
+;:update: Voltage
+:buttontext: Set DAC
+:tip: A1  output
+Volts 0 10
+
+#cmdSetup number Sine_Freq
+:read: :SOUR:SF?
+:readformat: u
+:write: :SOUR:SF #
+;:update: Frequency
+:buttontext: Set Freq
+:tip: Sine frequency
+Hertz 130 55000
+
+#cmdSetup radio Sine_level
+:read: :SOUR:SS?
+:readformat: u
+:write: :SOUR:SS #
+:tip: Set the sine output voltage step 
+Low 1
+High 8
+
+
+#cmdSetup separator - 
+2 100 Sunken
+
+#cmdSetup number DPOT 
+:read: :SOUR:DPOT?
+:readformat: u
+:write: :SOUR:DPOT #
+;:update: Voltage
+:buttontext: Set DPOT
+:tip: Digital pot
+Steps 0 255
+
+#cmdSetup separator - 
+2 100 Sunken
+
+#cmdSetup buttonsOn R1 
+:write: :SOUR:R1 
+:read: :SOUR:R1?
+:tip: Set R1 on 
+:String:
+Off 0
+On 1
+
+#cmdSetup buttonsOn R2 
+:write: :SOUR:R2
+:read: :SOUR:R2?
+:tip: Set R2 on 
+:String:
+Off 0
+On 1
+
+#cmdSetup separator - 
+2 100 Sunken
+
+#cmdSetup buttonsOn D1 
+:write: :SOUR:D1 
+:read: :SOUR:D1?
+:tip: Set D1 on 
+:String:
+Off 0
+On 1
+
+#cmdSetup buttonsOn D2 
+:write: :SOUR:D2 
+:read: :SOUR:D2?
+:tip: Set D2 on 
+:String:
+Off 0
+On 1
+
+;;;;;; Problematic - update can overwrite anything being **set**
+;;; keep at a low rate (assume other interfaces and this are not being used together
+#cmdSetup Updater update
+:update:  Ain1 Ain2 Din1 Din2
+1
+;D2 D1 dPot A2  R1 R2 In_D1 Out_D1 

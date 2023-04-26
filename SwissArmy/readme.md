@@ -16,4 +16,4 @@ WiFi and SCPI
 Hardware
 * https://github.com/RobTillaart/ADS1X15
 
-* https://github.com/WifWaf/MCP45HVX1 Jonathan Dempsey
+* https://github.com/WifWaf/MCP45HVX1

@@ -13,6 +13,6 @@ For the main SwissArmy code several non-ESP32 core libraries are required:
 * <TelnetStream.h>  https://github.com/jandrassy/TelnetStream
 * <Vrekrer_scpi_parser.h>  https://github.com/Vrekrer/Vrekrer_scpi_parser
 
-There is a fault on Rev A boards sourced from Silicon Chip, where the pins 20-38 on teh ESP32 have been reversed in production.
+### There is a fault on Rev A boards sourced from Silicon Chip, where the pins 20-38 on the ESP32 were reversed in production.
 
 Instructions to correct this error are found in "Swiss Army Knife Rev A PCB Corrections.pdf"

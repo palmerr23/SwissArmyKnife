@@ -51,7 +51,7 @@ SCPI_Parser my_instrument;
 #define CALMAXTWEAK (2.0)
 #define SMALLBIT (0.005) // float: not zero
 
-const int relayPin[RELAYS] = {27, 33}; // power + 2 reed
+const int relayPin[RELAYS] = {33, 27}; // power +  reed relays
 const int dacPin = 25; 
 const int dInPin[DIN] = {34,35}; 
 const int dInLED[DIN] = {5,18}; 

@@ -13,6 +13,10 @@ For the main SwissArmy code several non-ESP32 core libraries are required:
 * <TelnetStream.h>  https://github.com/jandrassy/TelnetStream
 * <Vrekrer_scpi_parser.h>  https://github.com/Vrekrer/Vrekrer_scpi_parser
 
-### There is a fault on Rev A boards sourced from Silicon Chip, where the pins 20-38 on the ESP32, and the pins to Relay 2 were reversed in production.
+### There is a fault on Rev A boards sourced from Silicon Chip, where the pins 20-38 on the ESP32, and the pins to Relay 2 were reversed in production. 
 
-Instructions to correct this error are found in "Swiss Army Knife Rev A PCB Corrections.pdf"
+### The control pins for Relays 1 nd 2 were reversed in the original code. 
+
+This has been corrected in the V2 binary in this directory and the code.
+
+Instructions to correct these errors are found in "Swiss Army Knife Rev A PCB Corrections.pdf"
